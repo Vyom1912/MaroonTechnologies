@@ -181,6 +181,7 @@ header {
   border-top: 1px solid var(--black);
   border-bottom: 1px solid var(--black);
   box-shadow: 0 0 10px var(--black);
+  /* overflow-x: hidden; */
 }
 
 .navbar {
@@ -216,7 +217,6 @@ header {
   color: var(--black);
   font-weight: 600;
   position: relative;
-  transition: all 0.3s ease;
 }
 .nav-list li a::after {
   content: "";
