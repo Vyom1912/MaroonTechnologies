@@ -108,6 +108,7 @@
 
   .header {
     padding: 0 0 0.5rem;
+    /* overflow-x: hidden; */
   }
   .header .logo {
     width: 10rem;
@@ -123,10 +124,10 @@
   }
   .nav-list li {
     margin: 7px 0;
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease; */
   }
   .nav-list {
-    width: 120%;
+    width: 0%;
     margin-top: 4.2rem;
     padding: 1rem 0;
     position: absolute;
@@ -150,7 +151,9 @@
     z-index: 1000;
   }
   .active-nav {
-    transform: translateX(0);
+    /* left: 0; */
+    transform: translateX(00%);
+    width: 120%;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
