@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // -----------------------------------------------------------------------------------------------
 
 // Timeline animation on scroll
-const timelineItems = document.querySelectorAll(".item-box, .p-box");
+const timelineItems = document.querySelectorAll(".item-box, .p-item");
 
 const observer = new IntersectionObserver(
   (entries) => {

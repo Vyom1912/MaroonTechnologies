@@ -25,7 +25,7 @@
 }
 
 @media only screen and (max-width: 1170px) {
-  .maroontechnologies {
+  .themaroons {
     background-size: 90%;
   }
   /* ------------------------ */
@@ -44,6 +44,12 @@
   }
 }
 
+@media only screen and (max-width: 1015px) {
+  .nav-list li a {
+    margin: 0;
+    padding: 0.6rem 0.45rem;
+  }
+}
 @media only screen and (max-width: 992px) {
   a,
   p,
@@ -53,10 +59,10 @@
   }
   /* ------------------------ */
 
-  .maroontechnologies {
+  .themaroons {
     background-size: 97%;
   }
-  .maroontechnologies.area {
+  .themaroons.area {
     width: 1.8rem;
     height: 2.9rem;
   }
@@ -95,7 +101,7 @@
 @media only screen and (max-width: 852px) {
   /* ------------------------ */
 
-  .maroontechnologies {
+  .themaroons {
     background-size: 110%;
   }
   /* ------------------------ */
@@ -192,7 +198,7 @@
   } */
 }
 @media only screen and (max-width: 675px) {
-  .maroontechnologies {
+  .themaroons {
     background-size: 130%;
   }
   .footer .footer-icones {
@@ -214,8 +220,17 @@
     max-width: 90% !important;
   }
 }
-/* @media only screen and (max-width: 420px) {
-  .form {
+@media only screen and (max-width: 500px) {
+  .themaroons {
     width: 100%;
+    height: 100vh;
+    background: url("image/respHero.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-attachment: fixed;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
   }
-} */
+}
