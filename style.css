@@ -520,11 +520,11 @@ header {
 /* Initial transform for direction */
 
 .project .p-item:nth-child(odd) {
-  transform: translateX(-75px);
+  transform: translateX(-70px);
 }
 
 .project .p-item:nth-child(even) {
-  transform: translateX(75px);
+  transform: translateX(70px);
 }
 .project .p-item:hover,
 .project .p-list:hover {
