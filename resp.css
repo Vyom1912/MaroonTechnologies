@@ -276,12 +276,12 @@
     transition: all 0.3s ease-in-out;
   }
   .project .portfolio {
-    justify-content: space-around !important;
-    row-gap: 12px;
+/*     justify-content: space-around !important; */
+    gap: 8px;
   }
 }
 @media (max-width: 400px) {
   .project .p-item {
-    width: 8.3rem !important;
+/*     width: 8.3rem !important; */
   }
 }
