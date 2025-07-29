@@ -17,10 +17,10 @@
     padding: 1.4rem;
   }
   .item-box:nth-child(2) {
-    transform: translateX(150px);
+    transform: translateX(100px);
   }
   .item-box:nth-child(3) {
-    transform: translateX(-150px);
+    transform: translateX(-100px);
   }
 }
 
