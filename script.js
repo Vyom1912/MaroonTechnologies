@@ -1,4 +1,4 @@
-// ---------------------------- Project List Rendering ----------------------------
+// ====================== PROJECT DATA ============================
 const projectList = [
   {
     title: "Rakhi Store",
@@ -39,7 +39,7 @@ const projectList = [
     title: "Website Design",
     category: "design",
     image: "image/project/website design.png",
-    link: "https://www.figma.com/proto/h0a5BJnj1e0ty6mmnwSMJO/e-commerce?node-id=0-8",
+    link: "https://www.figma.com/proto/h0a5BJnj1e0ty6mmnwSMJO/e-commerce?node-id=0-8&t=1AypsIwDehLZDD1Z-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=0%3A8&show-proto-sidebar=1",
     aos: "fade-left",
   },
   {
@@ -72,10 +72,11 @@ const projectList = [
   },
 ];
 
-const portfolioContainer = document.getElementById("portfolio");
-
+// ====================== DISPLAY PROJECT ============================
 function displayProject() {
+  const portfolioContainer = document.getElementById("portfolio");
   portfolioContainer.innerHTML = "";
+
   projectList.forEach((project) => {
     const item = document.createElement("div");
     item.className = "p-item flex flex-c show";
@@ -94,16 +95,48 @@ function displayProject() {
 
     portfolioContainer.appendChild(item);
   });
+
+  observeTimelineItems(); // trigger scroll animations
+
+  // Filter functionality
+  const filterButtons = document.querySelectorAll("#filter-btns li");
+  const pItems = document.querySelectorAll(".p-item");
+
+  // Show all initially
+  pItems.forEach((item) => item.classList.add("show"));
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      this.classList.add("active");
+
+      const target = this.getAttribute("data-target");
+
+      pItems.forEach((item) => {
+        const itemCategory = item.getAttribute("data-id");
+
+        if (target === "all" || itemCategory === target) {
+          item.classList.remove("show");
+          void item.offsetWidth; // Force reflow for animation
+          item.classList.add("show");
+        } else {
+          item.classList.remove("show");
+        }
+      });
+    });
+  });
 }
-document.addEventListener("DOMContentLoaded", displayProject);
 
-// ---------------------------- Scroll To Top Button ----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  displayProject();
+  displayServices();
+});
+
+// ====================== SCROLL TO TOP ============================
 let mybutton = document.getElementById("myBtn");
-
 window.onscroll = function () {
   scrollFunction();
 };
-
 function scrollFunction() {
   if (
     document.body.scrollTop > 500 ||
@@ -114,20 +147,18 @@ function scrollFunction() {
     mybutton.style.display = "none";
   }
 }
-
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
 
-// ---------------------------- Mobile Nav Toggle ----------------------------
+// ====================== NAV TOGGLE (MOBILE) ============================
 const mobile_nav_btn = document.querySelector(".mobile-nav-btn");
 const navList = document.querySelector(".nav-list");
 
 const toggleNavbar = () => {
   navList.classList.toggle("active-nav");
 };
-
 const closeNavbarOnClickOutside = (event) => {
   if (
     !navList.contains(event.target) &&
@@ -136,7 +167,6 @@ const closeNavbarOnClickOutside = (event) => {
     navList.classList.remove("active-nav");
   }
 };
-
 const deactivateNavbarOnResize = () => {
   navList.classList.remove("active-nav");
 };
@@ -144,12 +174,11 @@ const deactivateNavbarOnResize = () => {
 mobile_nav_btn.addEventListener("click", toggleNavbar);
 document.addEventListener("click", closeNavbarOnClickOutside);
 window.addEventListener("resize", deactivateNavbarOnResize);
-
 window.addEventListener("load", () => {
   navList.classList.remove("active-nav");
 });
 
-// ---------------------------- Active Nav Link on Scroll ----------------------------
+// ====================== NAV ACTIVE LINK ============================
 document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
     var currentScroll = window.pageYOffset;
@@ -158,8 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
     navLinks.forEach(function (link) {
       var sectionId = link.getAttribute("href").substring(1);
       var section = document.getElementById(sectionId);
-      if (!section) return;
-
       var sectionMiddle = section.offsetTop + section.offsetHeight / 2;
 
       if (
@@ -175,9 +202,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ---------------------------- Scroll Animation Reveal ----------------------------
+// ====================== REVEAL ON SCROLL (Fade Up) ============================
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
+
   for (var i = 0; i < reveals.length; i++) {
     var windowHeight = window.innerHeight;
     var elementTop = reveals[i].getBoundingClientRect().top;
@@ -190,7 +218,7 @@ function reveal() {
 }
 window.addEventListener("scroll", reveal);
 
-// ---------------------------- Intersection Observer (Scroll Entry Animations) ----------------------------
+// ====================== INTERSECTION OBSERVER ============================
 function observeTimelineItems() {
   const timelineItems = document.querySelectorAll(".item-box, .p-item");
   const observer = new IntersectionObserver(
@@ -203,96 +231,52 @@ function observeTimelineItems() {
     },
     { threshold: 0.5 }
   );
-
   timelineItems.forEach((item) => observer.observe(item));
 }
-observeTimelineItems();
 
-// ---------------------------- Project Filter Buttons ----------------------------
-const filterButtons = document.querySelectorAll("#filter-btns li");
-const pItems = document.querySelectorAll(".p-item");
-
-function showAllItems() {
-  pItems.forEach((item) => {
-    item.classList.add("show");
-  });
-}
-
-document.addEventListener("DOMContentLoaded", showAllItems);
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", function () {
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
-    this.classList.add("active");
-
-    const target = this.getAttribute("data-target");
-
-    pItems.forEach((item) => {
-      const itemCategory = item.getAttribute("data-id");
-      if (target === "all" || itemCategory === target) {
-        item.classList.remove("show");
-        void item.offsetWidth; // force reflow
-        item.classList.add("show");
-      } else {
-        item.classList.remove("show");
-      }
-    });
-  });
-});
-
-// ---------------------------- Services Section (Dynamic) ----------------------------
-const serviceData = [
+// ====================== SERVICE SECTION (GENERATED) ============================
+const serviceList = [
   {
     title: "Development",
     image: "image/html.png",
-    alt: "Development",
+    desc: "Unlock the full potential of your digital vision with our top-tier web development services - where creativity meets expertise.",
     aos: "fade-up",
-    description:
-      "Unlock the full potential of your digital vision with our top-tier web development services - where creativity meets expertise.",
   },
   {
     title: "Web Design",
     image: "image/web-development.png",
-    alt: "Web Design",
+    desc: "Elevate your online presence with our captivating web designs - where innovation and aesthetics converge.",
     aos: "fade-right",
-    description:
-      "Elevate your online presence with our captivating web designs - where innovation and aesthetics converge.",
   },
   {
     title: "UI/UX Design",
     image: "image/design.png",
-    alt: "UI/UX Design",
+    desc: "Crafting seamless user experiences that leave a lasting impression - our UI/UX designs redefine digital interactions.",
     aos: "fade-left",
-    description:
-      "Crafting seamless user experiences that leave a lasting impression - our UI/UX designs redefine digital interactions.",
   },
 ];
 
 function displayServices() {
   const serviceBox = document.getElementById("servicebox");
-  if (!serviceBox) return;
 
-  serviceBox.innerHTML = "";
+  serviceList.forEach((service) => {
+    const item = document.createElement("div");
+    item.className = "item-box";
+    item.setAttribute("data-aos", service.aos);
+    item.setAttribute("data-aos-once", "true");
 
-  serviceData.forEach((service) => {
-    const box = document.createElement("div");
-    box.className = "item-box";
-    box.setAttribute("data-aos", service.aos);
-    box.setAttribute("data-aos-once", "true");
-
-    box.innerHTML = `
+    item.innerHTML = `
       <div class="item-logo">
-        <img src="${service.image}" alt="${service.alt}" />
+        <img src="${service.image}" alt="${service.title}" />
       </div>
       <div class="item-heading"><h2>${service.title}</h2></div>
       <div class="item-text">
-        <p>${service.description}</p>
+        <p>${service.desc}</p>
       </div>
     `;
 
-    serviceBox.appendChild(box);
+    serviceBox.appendChild(item);
   });
 
-  observeTimelineItems(); // Reattach observer for newly created items
+  observeTimelineItems(); // ensure animation works on services too
 }
-document.addEventListener("DOMContentLoaded", displayServices);
