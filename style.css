@@ -388,21 +388,21 @@ header {
   opacity: 1;
 }
 .item-box:nth-child(1) {
-  transform: translateX(-150px);
+  transform: translateX(-125px);
 }
 .item-box.visible:nth-child(2) {
   transform: translateY(0px);
   opacity: 1;
 }
 .item-box:nth-child(2) {
-  transform: translateY(100px);
+  transform: translateY(125px);
 }
 .item-box.visible:nth-child(3) {
   transform: translateX(0px);
   opacity: 1;
 }
 .item-box:nth-child(3) {
-  transform: translateX(150px);
+  transform: translateX(125px);
 }
 .item-box:hover {
   border: 0.063rem solid var(--laal);
@@ -520,11 +520,11 @@ header {
 /* Initial transform for direction */
 
 .project .p-item:nth-child(odd) {
-  transform: translateX(-150px);
+  transform: translateX(-125px);
 }
 
 .project .p-item:nth-child(even) {
-  transform: translateX(150px);
+  transform: translateX(125px);
 }
 .project .p-item:hover,
 .project .p-list:hover {
