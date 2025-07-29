@@ -93,15 +93,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // -----------------------------------------------------------------------------------------------
-
-// Timeline animation on scroll
 const timelineItems = document.querySelectorAll(".item-box, .p-item");
 
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
+        entry.target.classList.add("visible"); // 👈 triggers .visible animation
       }
     });
   },
@@ -129,3 +127,37 @@ function reveal() {
 }
 
 window.addEventListener("scroll", reveal);
+// -----------------------------------------------------
+// filter project section
+const filterButtons = document.querySelectorAll("#filter-btns li");
+const pItems = document.querySelectorAll(".p-item");
+
+// Show all items on initial load
+showAllItems();
+
+function showAllItems() {
+  pItems.forEach((item) => {
+    item.classList.add("show");
+  });
+}
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    filterButtons.forEach((btn) => btn.classList.remove("active"));
+    this.classList.add("active");
+
+    const target = this.getAttribute("data-target");
+
+    pItems.forEach((item) => {
+      const itemCategory = item.getAttribute("data-id");
+
+      if (target === "all" || itemCategory === target) {
+        item.classList.remove("show"); // 🔁 Reset animation
+        void item.offsetWidth; // 🔁 Force reflow
+        item.classList.add("show"); // 👈 Filter visible
+      } else {
+        item.classList.remove("show"); // 👈 Hide filtered out
+      }
+    });
+  });
+});

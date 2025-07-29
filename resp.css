@@ -98,6 +98,13 @@
     max-width: 65% !important;
   }
 }
+@media (max-width: 881px) {
+  /* --------------------------- */
+  /* project */
+  .project .p-item {
+    width: 12rem;
+  }
+}
 @media only screen and (max-width: 852px) {
   /* ------------------------ */
 
@@ -114,7 +121,7 @@
 
   .header {
     padding: 0 0 0.5rem;
-    /* overflow-x: hidden; */
+    /* overflow: hidden; */
   }
   .header .logo {
     width: 10rem;
@@ -133,7 +140,7 @@
     /* transition: all 0.5s ease; */
   }
   .nav-list {
-    width: 0%;
+    width: 100%;
     margin-top: 4.2rem;
     padding: 1rem 0;
     position: absolute;
@@ -147,7 +154,7 @@
     opacity: 1;
     visibility: hidden;
     pointer-events: none;
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transition: all 0.5s linear;
     z-index: 1000;
     background-color: #ffffff;
@@ -186,6 +193,11 @@
     margin-top: 15px;
   }
   /* --------------------------- */
+  /* project */
+  .project .p-item {
+    width: 11rem;
+  }
+  /* --------------------------- */
   /* contect */
   .contect {
     background-size: 100%;
@@ -196,6 +208,19 @@
   /* .form {
     width: 70%;
   } */
+}
+@media (max-width: 726px) {
+  .project .portfolio {
+    width: 100%;
+    gap: 10px;
+  }
+  .project .p-item {
+    width: 9rem;
+  }
+  .project .p-item .p-name {
+    height: 2rem;
+    line-height: 2rem;
+  }
 }
 @media only screen and (max-width: 675px) {
   .themaroons {
@@ -220,6 +245,23 @@
     max-width: 90% !important;
   }
 }
+@media only screen and (max-width: 608px) {
+  .container {
+    width: 100% !important;
+    padding: 3.25px 0 !important;
+  }
+  .project .filter-buttons ul {
+    width: 18rem;
+    gap: 0.5rem;
+    margin: auto;
+    justify-content: flex-start;
+  }
+  .project .filter-buttons ul li {
+    font-size: 0.9rem;
+    padding: 8px;
+    transition: all 0.3s ease-in;
+  }
+}
 @media only screen and (max-width: 500px) {
   .themaroons {
     width: 100%;
@@ -232,5 +274,14 @@
     background-attachment: fixed;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+  }
+  .project .portfolio {
+    justify-content: space-around !important;
+    row-gap: 12px;
+  }
+}
+@media (max-width: 400px) {
+  .project .p-item {
+    width: 8.3rem !important;
   }
 }
