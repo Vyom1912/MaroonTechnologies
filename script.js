@@ -155,6 +155,7 @@ function topFunction() {
 // ====================== NAV TOGGLE (MOBILE) ============================
 const mobile_nav_btn = document.querySelector(".mobile-nav-btn");
 const navList = document.querySelector(".nav-list");
+const navLinks = document.querySelectorAll(".nav-list a");
 
 const toggleNavbar = () => {
   navList.classList.toggle("active-nav");
@@ -170,7 +171,11 @@ const closeNavbarOnClickOutside = (event) => {
 const deactivateNavbarOnResize = () => {
   navList.classList.remove("active-nav");
 };
-
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    navList.classList.remove("active-nav");
+  });
+});
 mobile_nav_btn.addEventListener("click", toggleNavbar);
 document.addEventListener("click", closeNavbarOnClickOutside);
 window.addEventListener("resize", deactivateNavbarOnResize);
